@@ -1,1 +1,1 @@
-Dönem Projem için yaptığım Günübirlik Gezi Web Sitesi 
+Dönem projem için yaptığım web site 
