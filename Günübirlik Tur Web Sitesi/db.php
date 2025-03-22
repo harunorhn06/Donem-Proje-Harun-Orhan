@@ -5,18 +5,16 @@ $username = "root";
 $password = "";
 $dbname = "turizm_db";
 
-// Bağlantıyı oluştur
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Bağlantıyı kontrol et
+
 if ($conn->connect_error) {
     die("Bağlantı hatası: " . $conn->connect_error);
 }
 
-// URL'den tur parametresini al
 $secili_tur = $_GET['tur'] ?? '';
 
-// Rezervasyon formundan gelen verileri işlemek için PHP kısmı
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tur_adi = $_POST['tur_adi'] ?? '';
     $ad_soyad = $_POST['ad_soyad'] ?? '';
@@ -24,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kisi_sayisi = $_POST['kisi_sayisi'] ?? '';
     $tarih = $_POST['tarih'] ?? '';
 
-    // Verileri veri tabanına ekle
     $sql = "INSERT INTO rezervasyonlar (tur_adi, ad_soyad, telefon, kisi_sayisi, tarih) 
             VALUES ('$tur_adi', '$ad_soyad', '$telefon', '$kisi_sayisi', '$tarih')";
 
@@ -45,12 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Mevcut stil kodlarınız burada kalacak */
+   
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <!-- Navbar içeriği -->
+       
     </nav>
 
     <header class="header text-white text-center">
@@ -64,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="success-message"><?php echo $mesaj; ?></div>
         <?php else: ?>
             <form method="POST" action="rezervasyon.php">
-                <!-- Form içeriği -->
+              
             </form>
         <?php endif; ?>
     </div>
@@ -78,6 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </html>
 
 <?php
-// Bağlantıyı kapat
+
 $conn->close();
 ?>
